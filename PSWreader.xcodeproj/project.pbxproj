@@ -13,6 +13,8 @@
 		32391B4B2505025E00067170 /* PSWreader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32391B492505025E00067170 /* PSWreader.xcdatamodeld */; };
 		32391B4D2505026500067170 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32391B4C2505026500067170 /* Assets.xcassets */; };
 		32391B502505026500067170 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32391B4E2505026500067170 /* LaunchScreen.storyboard */; };
+		32E08963250673700079F35B /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E08962250673700079F35B /* SearchController.swift */; };
+		32E08965250697600079F35B /* BorrowedBooksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E08964250697600079F35B /* BorrowedBooksController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		32391B4C2505026500067170 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32391B4F2505026500067170 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32391B512505026500067170 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32E08962250673700079F35B /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		32E08964250697600079F35B /* BorrowedBooksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowedBooksController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 			children = (
 				32391B422505025E00067170 /* AppDelegate.swift */,
 				32391B442505025E00067170 /* ViewController.swift */,
+				32E08962250673700079F35B /* SearchController.swift */,
+				32E08964250697600079F35B /* BorrowedBooksController.swift */,
 				32391B462505025E00067170 /* Main.storyboard */,
 				32391B4C2505026500067170 /* Assets.xcassets */,
 				32391B4E2505026500067170 /* LaunchScreen.storyboard */,
@@ -140,7 +146,9 @@
 			files = (
 				32391B452505025E00067170 /* ViewController.swift in Sources */,
 				32391B4B2505025E00067170 /* PSWreader.xcdatamodeld in Sources */,
+				32E08965250697600079F35B /* BorrowedBooksController.swift in Sources */,
 				32391B432505025E00067170 /* AppDelegate.swift in Sources */,
+				32E08963250673700079F35B /* SearchController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

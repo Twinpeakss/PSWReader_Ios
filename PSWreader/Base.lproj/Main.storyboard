@@ -63,6 +63,9 @@
                                                         <state key="normal" title="Dalej">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <segue destination="V4r-4C-gbT" kind="show" id="E7e-la-LR1"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <edgeInsets key="layoutMargins" top="8" left="15" bottom="8" right="15"/>
@@ -109,10 +112,103 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="LogIn" destination="diN-c9-kor" id="jvF-fS-pRM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+        </scene>
+        <!--Szukaj -->
+        <scene sceneID="xF8-7P-dhL">
+            <objects>
+                <viewController id="pgJ-xu-8wI" customClass="SearchController" customModule="PSWreader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5jP-am-QcE" customClass="Search">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="540-2B-wM5">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" placeholder="Wpisz nazwę..." translatesAutoresizingMaskIntoConstraints="NO" id="1x5-b2-IYS">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="91"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDW-JW-mMs">
+                                        <rect key="frame" x="0.0" y="105" width="375" height="30"/>
+                                        <state key="normal" title="Szukaj"/>
+                                    </button>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uAR-FP-fux">
+                                        <rect key="frame" x="0.0" y="149" width="375" height="454"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="540-2B-wM5" firstAttribute="top" secondItem="dXd-yf-kBN" secondAttribute="top" id="YDg-zr-PqY"/>
+                            <constraint firstItem="dXd-yf-kBN" firstAttribute="trailing" secondItem="540-2B-wM5" secondAttribute="trailing" id="mVR-OR-Egt"/>
+                            <constraint firstItem="dXd-yf-kBN" firstAttribute="bottom" secondItem="540-2B-wM5" secondAttribute="bottom" id="s0d-i2-w7t"/>
+                            <constraint firstItem="540-2B-wM5" firstAttribute="leading" secondItem="5jP-am-QcE" secondAttribute="leading" id="tYp-Bd-Le1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dXd-yf-kBN"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Szukaj " id="7H7-ns-2ki">
+                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="4kp-1v-lha">
+                            <connections>
+                                <segue destination="HhH-Hj-WTR" kind="show" id="X7Q-tg-Ifj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DDd-gc-uXP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1936.8" y="133.5832083958021"/>
+        </scene>
+        <!--Wypozyczone książki-->
+        <scene sceneID="8OG-8J-KGL">
+            <objects>
+                <viewController title="Wypozyczone książki" id="HhH-Hj-WTR" customClass="BorrowedBooksController" customModule="PSWreader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HuT-QF-199">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wypożyczone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irm-kW-VFo">
+                                <rect key="frame" x="133" y="40" width="108" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="SrI-1n-1D7"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gBI-sH-ZUw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2745" y="134"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Ori-zT-MdD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="V4r-4C-gbT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KEJ-V5-bT8">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pgJ-xu-8wI" kind="relationship" relationship="rootViewController" id="p8N-Qx-CxV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cxP-Z5-dwd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="997.60000000000002" y="133.5832083958021"/>
         </scene>
     </scenes>
     <resources>
