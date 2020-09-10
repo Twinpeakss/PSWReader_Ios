@@ -10,9 +10,6 @@ import UIKit
 
 class LoginController: UIViewController {
 
-    let user_email = "admin"
-    let password = "admin"
-    
     @IBOutlet weak var LogIn: UIButton!
     
     @IBOutlet weak var Email: UITextField!
@@ -28,37 +25,36 @@ class LoginController: UIViewController {
         LogIn.layer.shadowOpacity = 0.5
         LogIn.layer.shadowColor =   UIColor.orange.cgColor
         LogIn.layer.shadowOffset = CGSize(width: 0, height: 0)
-        InitiateLoginData()
+    
     }
     
     
-    func InitiateLoginData(){
-        dataSave.set(user_email, forKey: "email")
-        dataSave.set(password, forKey:"password")
-    }
+    
+    
     
     
     @IBAction func LoginButtonTaped(_ sender: Any) {
         
-        if(dataSave.string(forKey: "email") == Email.text && dataSave.string(forKey: "password") == Password.text)
+        if(dataSave.string(forKey: "userEmail") == Email.text && dataSave.string(forKey: "userPassword") == Password.text)
         {
             
             dataSave.set(true, forKey: "isUserLoggedIn")
             
+            self.dismiss(animated: true, completion: nil)
             //Show Another ViewController
         }
         else
         {
-            ShowAllertMessage()
+            ShowAllertMessage("Wprowadzone nie poprawne dane")
         }
         
         
     }
     
     
-    func ShowAllertMessage()
+    func ShowAllertMessage(_ userMessage: String)
     {
-        let alert = UIAlertController(title: "Powiadomienie", message: "Nie poprawne dane", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Powiadomienie", message: userMessage, preferredStyle: UIAlertController.Style.alert)
         
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
         

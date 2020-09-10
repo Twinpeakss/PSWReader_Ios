@@ -13,14 +13,21 @@ class SearchController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //dataSave.set(true, forKey: "isUserLoggedIn")
-        
     }
+    
+    
+    
+    @IBAction func userLoggedOut(_ sender: Any) {
+        UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
+        performSegue(withIdentifier: "LoginViewSegue", sender: self)
+    }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        UserDefaults.standard.removeObject(forKey: "isUserLoggedIn")
+        //UserDefaults.standard.removeObject(forKey: "isUserLoggedIn")
         
         let isLogin = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
         if(isLogin != true)
@@ -28,6 +35,7 @@ class SearchController: UIViewController {
             performSegue(withIdentifier: "LoginViewSegue", sender: self)
             
         }
+        
     }
     
 

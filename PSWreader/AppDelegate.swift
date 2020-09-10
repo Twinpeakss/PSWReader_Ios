@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    //Trying to customize start up point of the app
     func userIsLoggedIn()
     {
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
