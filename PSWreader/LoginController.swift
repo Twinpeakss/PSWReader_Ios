@@ -1,18 +1,18 @@
 //
-//  ViewController.swift
+//  LoginController.swift
 //  PSWreader
-//s
-//  Created by dima on 06.09.2020.
+//
+//  Created by dima on 09.09.2020.
 //  Copyright © 2020 dima. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
-    
+class LoginController: UIViewController {
+
     let user_email = "admin"
     let password = "admin"
-
+    
     @IBOutlet weak var LogIn: UIButton!
     
     @IBOutlet weak var Email: UITextField!
@@ -26,15 +26,15 @@ class ViewController: UIViewController {
         LogIn.layer.cornerRadius = 25
         LogIn.layer.shadowRadius = 9
         LogIn.layer.shadowOpacity = 0.5
-        LogIn.layer.shadowColor = 	UIColor.orange.cgColor
+        LogIn.layer.shadowColor =   UIColor.orange.cgColor
         LogIn.layer.shadowOffset = CGSize(width: 0, height: 0)
         InitiateLoginData()
     }
     
-   
+    
     func InitiateLoginData(){
         dataSave.set(user_email, forKey: "email")
-        dataSave.set(password, forKey:"password")        
+        dataSave.set(password, forKey:"password")
     }
     
     
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
             ShowAllertMessage()
         }
         
-       
+        
     }
     
     
@@ -64,12 +64,5 @@ class ViewController: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
-    
-    
-    
-    
-    
-    
-    
-}
 
+}

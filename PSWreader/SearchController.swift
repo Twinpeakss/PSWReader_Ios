@@ -12,8 +12,22 @@ class SearchController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        //dataSave.set(true, forKey: "isUserLoggedIn")
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        UserDefaults.standard.removeObject(forKey: "isUserLoggedIn")
+        
+        let isLogin = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
+        if(isLogin != true)
+        {
+            performSegue(withIdentifier: "LoginViewSegue", sender: self)
+            
+        }
     }
     
 

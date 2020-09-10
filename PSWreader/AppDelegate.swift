@@ -14,9 +14,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    func userIsLoggedIn()
+    {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let isLogin = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
+        if(isLogin)
+        {
+             let mainPage = mainStoryboard.instantiateViewController(withIdentifier: "SearchController")
+             window?.rootViewController? = mainPage
+             window?.makeKeyAndVisible()
+        }
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        //userIsLoggedIn()
+        
         return true
     }
 
