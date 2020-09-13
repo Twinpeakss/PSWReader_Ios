@@ -16,6 +16,7 @@
 		32E08963250673700079F35B /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E08962250673700079F35B /* SearchController.swift */; };
 		32E08965250697600079F35B /* BorrowedBooksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E08964250697600079F35B /* BorrowedBooksController.swift */; };
 		32F6DC7125093000006579F5 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F6DC7025093000006579F5 /* LoginController.swift */; };
+		88C2DE80250D35A100C32EEA /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2DE7F250D35A100C32EEA /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		32E08962250673700079F35B /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		32E08964250697600079F35B /* BorrowedBooksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowedBooksController.swift; sourceTree = "<group>"; };
 		32F6DC7025093000006579F5 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		88C2DE7F250D35A100C32EEA /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				325D00F7250AB45800F2F28C /* RegisterPageViewController.swift */,
 				32E08962250673700079F35B /* SearchController.swift */,
 				32E08964250697600079F35B /* BorrowedBooksController.swift */,
+				88C2DE7F250D35A100C32EEA /* TableViewCell.swift */,
 				32391B462505025E00067170 /* Main.storyboard */,
 				32391B4C2505026500067170 /* Assets.xcassets */,
 				32391B4E2505026500067170 /* LaunchScreen.storyboard */,
@@ -152,6 +155,7 @@
 				325D00F8250AB45800F2F28C /* RegisterPageViewController.swift in Sources */,
 				32E08965250697600079F35B /* BorrowedBooksController.swift in Sources */,
 				32391B432505025E00067170 /* AppDelegate.swift in Sources */,
+				88C2DE80250D35A100C32EEA /* TableViewCell.swift in Sources */,
 				32E08963250673700079F35B /* SearchController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
