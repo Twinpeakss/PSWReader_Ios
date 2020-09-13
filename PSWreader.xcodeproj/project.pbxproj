@@ -17,6 +17,7 @@
 		32E08965250697600079F35B /* BorrowedBooksController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E08964250697600079F35B /* BorrowedBooksController.swift */; };
 		32F6DC7125093000006579F5 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F6DC7025093000006579F5 /* LoginController.swift */; };
 		88C2DE80250D35A100C32EEA /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C2DE7F250D35A100C32EEA /* TableViewCell.swift */; };
+		88DA1566250EA2F500C5F7C6 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DA1565250EA2F500C5F7C6 /* Book.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		32E08964250697600079F35B /* BorrowedBooksController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowedBooksController.swift; sourceTree = "<group>"; };
 		32F6DC7025093000006579F5 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		88C2DE7F250D35A100C32EEA /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		88DA1565250EA2F500C5F7C6 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				32391B4E2505026500067170 /* LaunchScreen.storyboard */,
 				32391B512505026500067170 /* Info.plist */,
 				32391B492505025E00067170 /* PSWreader.xcdatamodeld */,
+				88DA1565250EA2F500C5F7C6 /* Book.swift */,
 			);
 			path = PSWreader;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88DA1566250EA2F500C5F7C6 /* Book.swift in Sources */,
 				32F6DC7125093000006579F5 /* LoginController.swift in Sources */,
 				32391B4B2505025E00067170 /* PSWreader.xcdatamodeld in Sources */,
 				325D00F8250AB45800F2F28C /* RegisterPageViewController.swift in Sources */,

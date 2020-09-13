@@ -8,23 +8,46 @@
 
 import UIKit
 
-class BorrowedBooksController: UIViewController {
+class BorrowedBooksController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching {
 
+    var books: [Book] = []
+    
+    @IBOutlet weak var rentalsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        rentalsTableView.delegate = self
+        rentalsTableView.dataSource = self
+        //booksTableView.prefetchDataSource = self
+        let url = "https://still-depths-12733.herokuapp.com/"
+        URLSession.shared.dataTask(with: URL(string: url)!) {(data, response, error) in
+            do {
+                self.books = try JSONDecoder().decode([Book].self, from: data!)
+            } catch { print(error) }
+            DispatchQueue.main.async {
+                self.rentalsTableView.reloadData()
+            }
+            }.resume()
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return books.count
     }
-    */
-
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
+        cell.coverImageView.load(url: URL(string: books[indexPath.row].cover)!)
+        cell.nameLabel.text = books[indexPath.row].name
+        cell.infoLabel.text = "\(books[indexPath.row].published), \(books[indexPath.row].author)"
+        cell.descLabel.text = books[indexPath.row].desc
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
 }

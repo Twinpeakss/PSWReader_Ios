@@ -8,22 +8,21 @@
 
 import UIKit
 
-class SearchController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching{
+class SearchController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching, UITextFieldDelegate{
 
     var books: [Book] = []
     
     @IBOutlet weak var showFiltersButton: UIButton!
-    
     @IBOutlet weak var searchButton: UIButton!
     
-    @IBOutlet weak var tfAvailability: UITextField!
+    @IBOutlet weak var authorTextField: UITextField!
+    @IBOutlet weak var dateFromTextField: UITextField!
+    @IBOutlet weak var dateToTextField: UITextField!
+    @IBOutlet weak var availabilityTextField: UITextField!
+    @IBOutlet weak var typeTextField: UITextField!
+    @IBOutlet weak var languageTextField: UITextField!
     
-    @IBOutlet weak var tfType: UITextField!
-    
-    @IBOutlet weak var tfLang: UITextField!
-    
-    @IBOutlet weak var searchItems: UIStackView!
-    
+    @IBOutlet weak var filtersStackView: UIStackView!
     
     @IBOutlet weak var booksTableView: UITableView!
     
@@ -35,7 +34,7 @@ class SearchController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     let bookType = ["Książka", "Publikacja fachowa", "Poradnik","Przewodnik", "Publikacja naukowa", "Publikacja dydaktyczna", "Czasopismo"]
     let languages = ["Polski", "Angielski", "Rosyjski"]
     override func viewDidLoad() {
-        searchItems.isHidden = true
+        filtersStackView.isHidden = true
         super.viewDidLoad()
         
         showFiltersButton.layer.cornerRadius = 12
@@ -51,21 +50,23 @@ class SearchController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         
         booksTableView.delegate = self
         booksTableView.dataSource = self
-        booksTableView.prefetchDataSource = self
+        //booksTableView.prefetchDataSource = self
         availabilityPickerView.delegate = self
         availabilityPickerView.dataSource = self
         typePickerView.delegate = self
         typePickerView.dataSource = self
         langPickerView.delegate = self
         langPickerView.dataSource = self
+        dateToTextField.delegate = self
+        dateFromTextField.delegate = self
         
-        tfAvailability.inputView = availabilityPickerView
-        tfType.inputView = typePickerView
-        tfLang.inputView = langPickerView
+        availabilityTextField.inputView = availabilityPickerView
+        typeTextField.inputView = typePickerView
+        languageTextField.inputView = langPickerView
         
-        tfAvailability.placeholder = "wybierz dostępność"
-        tfType.placeholder = "wybierz typ"
-        tfLang.placeholder = "wybierz język książki"
+        availabilityTextField.placeholder = "wybierz dostępność"
+        typeTextField.placeholder = "wybierz typ"
+        languageTextField.placeholder = "wybierz język książki"
         
         availabilityPickerView.tag = 1
         typePickerView.tag = 2
@@ -79,12 +80,13 @@ class SearchController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
             DispatchQueue.main.async {
                 self.booksTableView.reloadData()
             }
-            }.resume()
+        }.resume()
     }
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return books.count
     }
+    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
         cell.coverImageView.load(url: URL(string: books[indexPath.row].cover)!)
@@ -130,17 +132,25 @@ class SearchController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch pickerView.tag {
         case 1:
-            tfAvailability.text = availability[row]
-            tfAvailability.resignFirstResponder()
+            availabilityTextField.text = availability[row]
+            availabilityTextField.resignFirstResponder()
         case 2:
-            tfType.text = bookType[row]
-            tfType.resignFirstResponder()
+            typeTextField.text = bookType[row]
+            typeTextField.resignFirstResponder()
         case 3:
-            tfLang.text = languages[row]
-            tfLang.resignFirstResponder()
+            languageTextField.text = languages[row]
+            languageTextField.resignFirstResponder()
         default:
             return
         }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let allowedCharacters = "1234567890"
+        let allowedCharacterSet = CharacterSet(charactersIn: allowedCharacters)
+        let typedCharacterSet = CharacterSet(charactersIn: string)
+        return allowedCharacterSet.isSuperset(of: typedCharacterSet)
     }
     
     @IBAction func userLoggedOut(_ sender: Any) {
@@ -148,20 +158,46 @@ class SearchController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         performSegue(withIdentifier: "LoginViewSegue", sender: self)
     }
     
-
+    @IBAction func searchBooks(_ sender: Any) {
+        var author : String = ""
+        var dateFrom : String = ""
+        var dateTo : String = ""
+        var availability : String = ""
+        var type : String = ""
+        var language : String = ""
+        if(authorTextField.text != nil){
+            author = authorTextField.text!
+        }
+        if(dateFromTextField.text != nil){
+            dateFrom = dateFromTextField.text!
+        }
+        if (dateToTextField.text != nil){
+            dateTo = dateToTextField.text!
+        }
+        if(availabilityTextField.text != nil){
+            availability = availabilityTextField.text!
+        }
+        if(typeTextField.text != nil){
+            type = typeTextField.text!
+        }
+        if(languageTextField.text != nil){
+            language = languageTextField.text!
+        }
+        //request do bazki po książeczki
+        DispatchQueue.main.async { self.booksTableView.reloadData() }
+    }
+    
     @IBAction func showFilters(_ sender: Any) {
-        if(searchItems.isHidden == true){
-            searchItems.isHidden = false
+        if(filtersStackView.isHidden == true){
+            filtersStackView.isHidden = false
         }
         else {
-            searchItems.isHidden = true
+            filtersStackView.isHidden = true
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        //UserDefaults.standard.removeObject(forKey: "isUserLoggedIn")
         
         let isLogin = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
         if(isLogin != true)
@@ -170,25 +206,3 @@ class SearchController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         }
     }
 }
-struct Book: Decodable {
-    let name: String
-    let author: String
-    let published: String
-    let cover: String
-    let desc: String
-}
-
-extension UIImageView {
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
-    }
-}
-
