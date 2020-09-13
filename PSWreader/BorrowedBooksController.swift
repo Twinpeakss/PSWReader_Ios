@@ -27,11 +27,9 @@ class BorrowedBooksController: UIViewController, UITableViewDataSource, UITableV
                 self.rentalsTableView.reloadData()
             }
             }.resume()
-        
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return books.count
     }
     
@@ -42,9 +40,6 @@ class BorrowedBooksController: UIViewController, UITableViewDataSource, UITableV
         cell.infoLabel.text = "\(books[indexPath.row].published), \(books[indexPath.row].author)"
         cell.descLabel.text = books[indexPath.row].desc
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

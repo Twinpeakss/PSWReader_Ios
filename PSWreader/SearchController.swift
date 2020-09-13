@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching, UITextFieldDelegate{
+class SearchController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate{
 
     var books: [Book] = []
     
@@ -83,7 +83,6 @@ class SearchController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         }.resume()
     }
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return books.count
     }
     
@@ -94,9 +93,6 @@ class SearchController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         cell.infoLabel.text = "\(books[indexPath.row].published), \(books[indexPath.row].author)"
         cell.descLabel.text = books[indexPath.row].desc
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
