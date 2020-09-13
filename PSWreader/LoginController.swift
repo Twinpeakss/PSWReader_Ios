@@ -10,7 +10,7 @@ import UIKit
 
 class LoginController: UIViewController {
 
-    @IBOutlet weak var LogIn: UIButton!
+    @IBOutlet weak var logInButton: UIButton!
     
     @IBOutlet weak var Email: UITextField!
     
@@ -20,11 +20,11 @@ class LoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        LogIn.layer.cornerRadius = 25
-        LogIn.layer.shadowRadius = 9
-        LogIn.layer.shadowOpacity = 0.5
-        LogIn.layer.shadowColor =   UIColor.orange.cgColor
-        LogIn.layer.shadowOffset = CGSize(width: 0, height: 0)
+        logInButton.layer.cornerRadius = 25
+        logInButton.layer.shadowRadius = 9
+        logInButton.layer.shadowOpacity = 0.5
+        logInButton.layer.shadowColor =   UIColor.orange.cgColor
+        logInButton.layer.shadowOffset = CGSize(width: 0, height: 0)
     
     }
     

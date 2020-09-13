@@ -12,6 +12,10 @@ class SearchController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
 
     var books: [Book] = []
     
+    @IBOutlet weak var showFiltersButton: UIButton!
+    
+    @IBOutlet weak var searchButton: UIButton!
+    
     @IBOutlet weak var tfAvailability: UITextField!
     
     @IBOutlet weak var tfType: UITextField!
@@ -33,6 +37,17 @@ class SearchController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     override func viewDidLoad() {
         searchItems.isHidden = true
         super.viewDidLoad()
+        
+        showFiltersButton.layer.cornerRadius = 12
+        showFiltersButton.layer.shadowRadius = 5
+        showFiltersButton.layer.shadowOpacity = 0.5
+        showFiltersButton.layer.shadowColor =   UIColor.orange.cgColor
+        showFiltersButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+        searchButton.layer.cornerRadius = 12
+        searchButton.layer.shadowRadius = 5
+        searchButton.layer.shadowOpacity = 0.5
+        searchButton.layer.shadowColor =   UIColor.orange.cgColor
+        searchButton.layer.shadowOffset = CGSize(width: 0, height: 0)
         
         booksTableView.delegate = self
         booksTableView.dataSource = self
