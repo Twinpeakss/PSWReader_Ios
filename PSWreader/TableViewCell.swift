@@ -1,11 +1,3 @@
-//
-//  TableViewCell.swift
-//  PSWreader
-//
-//  Created by projekt sz on 12.09.2020.
-//  Copyright © 2020 dima. All rights reserved.
-//
-
 import UIKit
 
 class TableViewCell: UITableViewCell {
@@ -14,7 +6,10 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var rentalDateLabel: UILabel!
+    @IBOutlet weak var returnDateLabel: UILabel!
     
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
