@@ -14,10 +14,11 @@ Dziękuję wszystkim programistom za pracę!
 
 ## Teams signature
 
-Bartek Aka - Cobra1974 <br/>
-Sebastian Aka - Seba   <br/>
-Rafał Aka - warion123  <br/>
+Bartek Aka - Cobra1974 (swift warrior)<br/> 
+Sebastian Aka - Seba (js back-end warrior)  <br/>
+Rafał Aka - warion123 (swift warrior) <br/>
+Dima Aka - dima_raketa (swift warrior)<br/>
 
-edit by dima_raketa :)
+
 
 
