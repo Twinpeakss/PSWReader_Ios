@@ -8,3 +8,6 @@ Xcode 10.1
 
 ### Versions
 Version 1.0 is runnig.!
+
+### Thanks
+Dziękuję wszystkim programistom za pracę!
