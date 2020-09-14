@@ -13,6 +13,11 @@ Version 1.0 is runnig.!
 Dziękuję wszystkim programistom za pracę!
 
 ## Teams signature
+
+
+
+
+
 ░░░░░░░░░░░░░▄▄▀▀▀▀▀▀▄▄
 ░░░░░░░░░░▄▄▀▄▄▄█████▄▄▀▄
 ░░░░░░░░▄█▀▒▀▀▀█████████▄█▄
@@ -34,4 +39,10 @@ Dziękuję wszystkim programistom za pracę!
 ░█░░░░░▀▄▄▒▒▒▒▒▒▒▒▒▒▒▒▄▀░█░░░░░░░
 ░░█░░░░░░░▀▄▄▄▒▒▒▒▒▒▄▀░░░░█░░░░░░
 ░░░█░░░░░░░░░▌▀▀▀▀▀▀▐░░░░░▐▌░░░░░
+
+
+
+
+
+
 by Rafał
