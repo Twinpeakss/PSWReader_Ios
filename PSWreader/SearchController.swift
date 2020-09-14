@@ -1,20 +1,15 @@
-//
-//  SearchController.swift
-//  PSWreader
-//
-//  Created by dima on 07.09.2020.
-//  Copyright © 2020 dima. All rights reserved.
-//
-
 import UIKit
 
 class SearchController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate{
 
+    var user: User!
     var books: [Book] = []
     
     @IBOutlet weak var showFiltersButton: UIButton!
     @IBOutlet weak var searchButton: UIButton!
     
+    
+    @IBOutlet weak var titleSearchBar: UISearchBar!
     @IBOutlet weak var authorTextField: UITextField!
     @IBOutlet weak var dateFromTextField: UITextField!
     @IBOutlet weak var dateToTextField: UITextField!
@@ -30,9 +25,11 @@ class SearchController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     var typePickerView = UIPickerView()
     var langPickerView = UIPickerView()
     
-    let availability = ["Dostępna", "Wypożyczona"]
-    let bookType = ["Książka", "Publikacja fachowa", "Poradnik","Przewodnik", "Publikacja naukowa", "Publikacja dydaktyczna", "Czasopismo"]
-    let languages = ["Polski", "Angielski", "Rosyjski"]
+    let availability = ["","Dostępna", "Wypożyczona"]
+    let bookType = ["","Książka", "Publikacja fachowa", "Poradnik","Przewodnik", "Publikacja naukowa", "Publikacja dydaktyczna", "Czasopismo"]
+    let languages = ["","Polski", "Angielski", "Rosyjski"]
+    var bookAvailability = ["Dostępna": "1",
+                     "Wypożyczona": "0"]
     override func viewDidLoad() {
         filtersStackView.isHidden = true
         super.viewDidLoad()
@@ -72,7 +69,7 @@ class SearchController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         typePickerView.tag = 2
         langPickerView.tag = 3
         
-        let url = "https://still-depths-12733.herokuapp.com/"
+        let url = "https://fast-lowlands-95120.herokuapp.com/api/books"
         URLSession.shared.dataTask(with: URL(string: url)!) {(data, response, error) in
             do {
                 self.books = try JSONDecoder().decode([Book].self, from: data!)
@@ -151,35 +148,68 @@ class SearchController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     
     @IBAction func userLoggedOut(_ sender: Any) {
         UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
+        let url = URL(string: "https://fast-lowlands-95120.herokuapp.com/api/logout")
+        guard let requestUrl = url else { fatalError() }
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "GET"
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if error != nil {
+                print("Error took place (error)")
+                return
+            }
+            if (response as? HTTPURLResponse) != nil {
+                print("Response HTTP Status code: (response.statusCode)")
+            }
+            if let data = data, let _ = String(data: data, encoding: .utf8) {
+                print("Response data string:\n (dataString)")
+            }
+        }
+        task.resume()
         performSegue(withIdentifier: "LoginViewSegue", sender: self)
     }
     
     @IBAction func searchBooks(_ sender: Any) {
+        var title : String = ""
         var author : String = ""
         var dateFrom : String = ""
         var dateTo : String = ""
         var availability : String = ""
         var type : String = ""
         var language : String = ""
-        if(authorTextField.text != nil){
+        
+        if(titleSearchBar.text?.isEmpty == false){
+            title = titleSearchBar.text!
+        }
+        
+        if(authorTextField.text?.isEmpty == false){
             author = authorTextField.text!
         }
-        if(dateFromTextField.text != nil){
+        if(dateFromTextField.text?.isEmpty == false){
             dateFrom = dateFromTextField.text!
         }
-        if (dateToTextField.text != nil){
+        if (dateToTextField.text?.isEmpty == false){
             dateTo = dateToTextField.text!
         }
-        if(availabilityTextField.text != nil){
-            availability = availabilityTextField.text!
+        if(availabilityTextField.text?.isEmpty == false){
+            availability = bookAvailability[availabilityTextField.text!]!
         }
-        if(typeTextField.text != nil){
+        if(typeTextField.text?.isEmpty == false){
             type = typeTextField.text!
         }
-        if(languageTextField.text != nil){
+        if(languageTextField.text?.isEmpty == false){
             language = languageTextField.text!
         }
-        //request do bazki po książeczki
+        let url = "https://fast-lowlands-95120.herokuapp.com/api/books/search?name=\(title)&author=\(author)&dateFrom=\(dateFrom)&dateTo=\(dateTo)&availability=\(availability)&type=\(type)&lang=\(language)"
+        let urlString = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        print(urlString!)
+        URLSession.shared.dataTask(with: URL(string: urlString!)!) {(data, response, error) in
+            do {
+                self.books = try JSONDecoder().decode([Book].self, from: data!)
+            } catch { print(error) }
+            DispatchQueue.main.async {
+                self.booksTableView.reloadData()
+            }
+            }.resume()
         DispatchQueue.main.async { self.booksTableView.reloadData() }
     }
     
@@ -194,11 +224,5 @@ class SearchController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        let isLogin = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
-        if(isLogin != true)
-        {
-            performSegue(withIdentifier: "LoginViewSegue", sender: self)
-        }
     }
 }

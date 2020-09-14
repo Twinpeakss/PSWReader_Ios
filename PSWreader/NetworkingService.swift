@@ -1,15 +1,7 @@
-//
-//  NetworkingService.swift
-//  PSWreader
-//
-//  Created by projekt sz on 13.09.2020.
-//  Copyright © 2020 dima. All rights reserved.
-//
-
 import Foundation
 
 class NetworkingService {
-    let baseUrl = "https://still-depths-12733.herokuapp.com"
+    let baseUrl = "https://fast-lowlands-95120.herokuapp.com/api"
     func handleResponse(for request: URLRequest, completion: @escaping (Result<User, Error>) -> Void) {
         let session = URLSession.shared
         let task = session.dataTask(with: request) { (data, response, error) in
@@ -73,6 +65,22 @@ class NetworkingService {
         do {
             let loginData = try JSONEncoder().encode(loginObj)
             request.httpBody = loginData
+        } catch {
+            completion(.failure(NetworkingError.badEncoding))
+        }
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        handleResponse(for: request, completion: completion)
+    }
+    func request(endpoint: String, registerObj: Register, completion: @escaping (Result<User, Error>) -> Void) {
+        guard let url = URL(string: baseUrl + endpoint) else {
+            completion(.failure(NetworkingError.badUrl))
+            return
+        }
+        var request = URLRequest(url: url)
+        do {
+            let data = try JSONEncoder().encode(registerObj)
+            request.httpBody = data
         } catch {
             completion(.failure(NetworkingError.badEncoding))
         }

@@ -42,7 +42,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="QCl-3V-max">
                                                 <rect key="frame" x="15" y="75.5" width="345" height="198"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8h0-yh-Nzk">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nazwa użytkownika" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8h0-yh-Nzk">
                                                         <rect key="frame" x="15" y="8" width="315" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="G9X-Po-s0o"/>
@@ -116,9 +116,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="Email" destination="8h0-yh-Nzk" id="Iz4-wy-Vba"/>
-                        <outlet property="Password" destination="QXH-qA-EyW" id="iiQ-Lc-Y7r"/>
                         <outlet property="logInButton" destination="diN-c9-kor" id="KH5-AX-xea"/>
+                        <outlet property="passwordTextField" destination="QXH-qA-EyW" id="kKS-EG-YWs"/>
+                        <outlet property="usernameTextField" destination="8h0-yh-Nzk" id="zYs-m4-Kcr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -140,40 +140,52 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="7MG-DE-jhI">
-                                <rect key="frame" x="0.0" y="112" width="375" height="286"/>
+                                <rect key="frame" x="0.0" y="112" width="375" height="335"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nazwa użytkownika" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2dh-SW-zEG">
+                                        <rect key="frame" x="15" y="8" width="345" height="27.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nazwa użytkownika" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w8m-99-gTd">
+                                        <rect key="frame" x="15" y="49.5" width="345" height="28"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmv-MX-xHD">
-                                        <rect key="frame" x="15" y="8" width="345" height="33.5"/>
+                                        <rect key="frame" x="15" y="91.5" width="345" height="27.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nEa-pK-sNj">
-                                        <rect key="frame" x="15" y="55.5" width="345" height="33"/>
+                                        <rect key="frame" x="15" y="133" width="345" height="27.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hasło" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tyo-iQ-iah">
-                                        <rect key="frame" x="15" y="102.5" width="345" height="33.5"/>
+                                        <rect key="frame" x="15" y="174.5" width="345" height="27.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hasło" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v86-zE-pAc">
-                                        <rect key="frame" x="15" y="150" width="345" height="33.5"/>
+                                        <rect key="frame" x="15" y="216" width="345" height="28"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powtórz hasło" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FD3-Wn-rQm">
-                                        <rect key="frame" x="15" y="197.5" width="345" height="33"/>
+                                        <rect key="frame" x="15" y="258" width="345" height="27.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Powtórz hasło" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2bc-rE-bsW">
-                                        <rect key="frame" x="15" y="244.5" width="345" height="33.5"/>
+                                        <rect key="frame" x="15" y="299.5" width="345" height="27.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -182,7 +194,7 @@
                                 <edgeInsets key="layoutMargins" top="8" left="15" bottom="8" right="15"/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCf-0n-K6u">
-                                <rect key="frame" x="123" y="444" width="112" height="30"/>
+                                <rect key="frame" x="123" y="493" width="112" height="30"/>
                                 <color key="backgroundColor" red="0.35750737440000002" green="0.44876071290000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Zarejestruj"/>
@@ -204,7 +216,7 @@
                             <constraint firstItem="FCf-0n-K6u" firstAttribute="leading" secondItem="wTB-EX-01a" secondAttribute="leading" constant="123" id="HUI-RU-noy"/>
                             <constraint firstItem="FCf-0n-K6u" firstAttribute="top" secondItem="7MG-DE-jhI" secondAttribute="bottom" constant="46" id="IaJ-RO-QR9"/>
                             <constraint firstItem="wTB-EX-01a" firstAttribute="trailing" secondItem="7MG-DE-jhI" secondAttribute="trailing" id="R5O-92-kO0"/>
-                            <constraint firstAttribute="bottom" secondItem="7MG-DE-jhI" secondAttribute="bottom" constant="269" id="Sxn-1O-fbb"/>
+                            <constraint firstAttribute="bottom" secondItem="7MG-DE-jhI" secondAttribute="bottom" constant="220" id="Sxn-1O-fbb"/>
                             <constraint firstItem="wTB-EX-01a" firstAttribute="bottom" secondItem="NWl-0T-1n6" secondAttribute="bottom" constant="20" id="V6G-dV-Lll"/>
                             <constraint firstItem="7MG-DE-jhI" firstAttribute="top" secondItem="7PA-1I-4fw" secondAttribute="bottom" constant="33" id="eiU-Bt-bVZ"/>
                             <constraint firstItem="7PA-1I-4fw" firstAttribute="leading" secondItem="wTB-EX-01a" secondAttribute="leading" constant="134" id="fOY-B3-vo6"/>
@@ -217,6 +229,7 @@
                     <connections>
                         <outlet property="repeatPasswordField" destination="2bc-rE-bsW" id="ZbD-u9-6oj"/>
                         <outlet property="userEmailField" destination="nEa-pK-sNj" id="D2p-2Q-fER"/>
+                        <outlet property="userLoginField" destination="w8m-99-gTd" id="sjs-QX-e3S"/>
                         <outlet property="userPasswordField" destination="v86-zE-pAc" id="VHk-b8-IX1"/>
                     </connections>
                 </viewController>
@@ -458,6 +471,7 @@
                         <outlet property="languageTextField" destination="Zps-7e-WFH" id="mA7-cX-HkF"/>
                         <outlet property="searchButton" destination="VDW-JW-mMs" id="vpP-BV-eRn"/>
                         <outlet property="showFiltersButton" destination="8ic-Yl-j0H" id="2SG-pj-cIq"/>
+                        <outlet property="titleSearchBar" destination="1x5-b2-IYS" id="bFq-gc-nNr"/>
                         <outlet property="typeTextField" destination="UZh-qc-VJb" id="Lu0-9w-LEO"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="LoginViewSegue" id="YTd-YC-xoB"/>
                     </connections>
@@ -496,8 +510,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="------------------------------------------------------------------------------------" lineBreakMode="wordWrap" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3S-ia-Sg7">
-                                                    <rect key="frame" x="134" y="58" width="241" height="61"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Data wyp:" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3S-ia-Sg7">
+                                                    <rect key="frame" x="134" y="58" width="101" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -514,6 +528,27 @@
                                                     <rect key="frame" x="56" y="56" width="20" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </activityIndicatorView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="xxxx-xx-xx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAT-pr-eLG">
+                                                    <rect key="frame" x="243" y="58" width="117" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Data zwrotu:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCA-vH-03P">
+                                                    <rect key="frame" x="134" y="86" width="101" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="xxxx-xx-xx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYI-t7-gPO">
+                                                    <rect key="frame" x="243" y="85" width="117" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -522,6 +557,8 @@
                                             <outlet property="descLabel" destination="G3S-ia-Sg7" id="yOr-Ct-d5p"/>
                                             <outlet property="infoLabel" destination="wyJ-6D-OAm" id="iXH-76-HC0"/>
                                             <outlet property="nameLabel" destination="E5i-Iu-Nf8" id="Lwx-hr-fgL"/>
+                                            <outlet property="rentalDateLabel" destination="ZAT-pr-eLG" id="LCq-t5-gLd"/>
+                                            <outlet property="returnDateLabel" destination="eYI-t7-gPO" id="hzm-a1-hOE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -537,7 +574,7 @@
                         <viewLayoutGuide key="safeArea" id="SrI-1n-1D7"/>
                     </view>
                     <connections>
-                        <outlet property="rentalsTableView" destination="4IP-2h-1JF" id="rFA-ht-z19"/>
+                        <outlet property="rentalsTableView" destination="4IP-2h-1JF" id="ieL-uF-fhs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gBI-sH-ZUw" userLabel="First Responder" sceneMemberID="firstResponder"/>
