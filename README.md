@@ -14,7 +14,7 @@ Dziękuję wszystkim programistom za pracę!
 
 ## Teams signature
 
-Bartek Aka - Cobra1974
+Bartek Aka - Cobra1974 <br/>
 Sebastian Aka - Seba
 Rafał Aka - warion123
 
