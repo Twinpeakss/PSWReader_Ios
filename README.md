@@ -6,7 +6,7 @@ The application that allows you to borrow books in the library, view the list of
 ![GIF](http://g.recordit.co/E1Tf748Gh8.gif)
 ### Tools
 Xcode 10.1 <br/>
-Server side: JavaScript, MongoDb, NoSQL <br/>
+Server side: JavaScript(node.js express.js), MongoDb, NoSQL <br/>
 Client side: Swift 4.2 <br/>
 
 ### Versions
