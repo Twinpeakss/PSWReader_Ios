@@ -9,7 +9,7 @@ struct Book: Decodable {
     let desc: String
     let type: String
     let lang: String
-    let availability: Bool
+    let availability: Int
 }
 
 extension UIImageView {

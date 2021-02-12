@@ -69,7 +69,7 @@ class SearchController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         typePickerView.tag = 2
         langPickerView.tag = 3
         
-        let url = "https://fast-lowlands-95120.herokuapp.com/api/books"
+        let url = "https://shielded-basin-37487.herokuapp.com/api/books"
         URLSession.shared.dataTask(with: URL(string: url)!) {(data, response, error) in
             do {
                 self.books = try JSONDecoder().decode([Book].self, from: data!)
@@ -148,7 +148,9 @@ class SearchController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     
     @IBAction func userLoggedOut(_ sender: Any) {
         UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
-        let url = URL(string: "https://fast-lowlands-95120.herokuapp.com/api/logout")
+        UserDefaults.standard.set(nil, forKey: "userID")
+        UserDefaults.standard.set(nil, forKey: "userUsername")
+        let url = URL(string: "https://shielded-basin-37487.herokuapp.com/api/logout")
         guard let requestUrl = url else { fatalError() }
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "GET"
@@ -199,7 +201,7 @@ class SearchController: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         if(languageTextField.text?.isEmpty == false){
             language = languageTextField.text!
         }
-        let url = "https://fast-lowlands-95120.herokuapp.com/api/books/search?name=\(title)&author=\(author)&dateFrom=\(dateFrom)&dateTo=\(dateTo)&availability=\(availability)&type=\(type)&lang=\(language)"
+        let url = "https://shielded-basin-37487.herokuapp.com/api/books/search?name=\(title)&author=\(author)&dateFrom=\(dateFrom)&dateTo=\(dateTo)&availability=\(availability)&type=\(type)&lang=\(language)"
         let urlString = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         print(urlString!)
         URLSession.shared.dataTask(with: URL(string: urlString!)!) {(data, response, error) in

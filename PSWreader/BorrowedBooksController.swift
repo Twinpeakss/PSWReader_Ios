@@ -12,13 +12,14 @@ class BorrowedBooksController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         rentalsTableView.delegate = self
         rentalsTableView.dataSource = self
-        let url = "https://fast-lowlands-95120.herokuapp.com/api/rentals/user/\(dataSave.string(forKey: "userID")!)"
+        let url = "https://shielded-basin-37487.herokuapp.com/api/rentals/user/\(dataSave.string(forKey: "userID")!)"
         URLSession.shared.dataTask(with: URL(string: url)!) {(data, response, error) in
             do {
                 self.rentals = try JSONDecoder().decode([Rental].self, from: data!)
             } catch { print(error) }
             DispatchQueue.main.async {
                 self.rentalsTableView.reloadData()
+                print (self.rentals)
             }
             }.resume()
         //userLabel.text = "\(dataSave.string(forKey: "userUsername"))'s Rentals:"
@@ -34,7 +35,10 @@ class BorrowedBooksController: UIViewController, UITableViewDataSource, UITableV
         cell.nameLabel.text = rentals[indexPath.row].book.name
         cell.infoLabel.text = "\(String(rentals[indexPath.row].book.published)), \(rentals[indexPath.row].book.author)"
         cell.rentalDateLabel.text = String(rentals[indexPath.row].rental_date.prefix(10))
-        cell.returnDateLabel.text = String(rentals[indexPath.row].return_date.prefix(10))
+        if (rentals[indexPath.row].return_date?.isEmpty == false)
+        {
+            cell.returnDateLabel.text = String(rentals[indexPath.row].return_date!.prefix(10))
+        }
         return cell
     }
     
@@ -47,5 +51,5 @@ struct Rental: Decodable {
     let user: String
     let book: Book
     let rental_date: String
-    let return_date: String
+    let return_date: String?
 }

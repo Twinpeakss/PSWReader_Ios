@@ -1,7 +1,7 @@
 import Foundation
 
 class NetworkingService {
-    let baseUrl = "https://fast-lowlands-95120.herokuapp.com/api"
+    let baseUrl = "https://shielded-basin-37487.herokuapp.com/api"
     func handleResponse(for request: URLRequest, completion: @escaping (Result<User, Error>) -> Void) {
         let session = URLSession.shared
         let task = session.dataTask(with: request) { (data, response, error) in
